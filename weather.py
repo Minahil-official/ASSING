@@ -1,7 +1,7 @@
 from meta_ai_api import MetaAI
 llm = MetaAI()
 import streamlit as st
-
+st.title("Weather App")
 user_input = st.text_input("Enter your country: ")
 
 prompt = f"""you are a specialized weather custom Gpt you have to tell the
