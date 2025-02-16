@@ -1,7 +1,8 @@
 from meta_ai_api import MetaAI
 llm = MetaAI()
+import streamlit as st
 
-user_input = input("Enter your country: ")
+user_input = st.text_input("Enter your country: ")
 
 prompt = f"""you are a specialized weather custom Gpt you have to tell the
 weather of the country that the user has entered. user ask for {user_input} weather
@@ -14,5 +15,12 @@ if the user ask anything else weather you will tell that sorry iam not capable o
 
 """
 
-response = llm.prompt(prompt)
-print(response["message"])
+if st.button("Get Weather"):
+    if user_input:
+        with st.spinner("Fetching weather information..."):
+            pass
+    else:
+        st.warning("Please enter a country name.")
+
+    response = llm.prompt(prompt)
+    st.write(response["message"])
